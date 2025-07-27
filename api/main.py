@@ -6,6 +6,7 @@ from typing import Optional, List
 from enum import Enum
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 # 添加项目根目录到Python路径
@@ -17,6 +18,14 @@ app = FastAPI(
     title="MediaCrawler API",
     description="媒体爬虫API服务",
     version="1.0.0",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
