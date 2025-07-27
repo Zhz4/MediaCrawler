@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { api, ApiResponse, Platform } from "@/lib/api";
+import { api, Platform } from "@/lib/api";
 
 interface StatusMonitorProps {
   className?: string;
