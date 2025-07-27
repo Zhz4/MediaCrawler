@@ -1,0 +1,97 @@
+# Git相关
+.git
+.gitignore
+.gitattributes
+.github
+
+# Python相关
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+.pytest_cache
+.coverage
+.tox
+.mypy_cache
+.venv
+.env
+.env.local
+.env.*.local
+venv/
+env/
+ENV/
+
+# Node.js相关
+web/node_modules
+web/.next
+web/out
+web/.env
+web/.env.local
+web/.env.production.local
+web/.env.development.local
+web/npm-debug.log*
+web/yarn-debug.log*
+web/yarn-error.log*
+
+# 数据和缓存目录
+data/
+browser_data/
+cache/
+*.db
+*.sqlite
+*.sqlite3
+
+# 文档和README
+README.md
+README_*.md
+docs/
+*.md
+
+# IDE和编辑器
+.vscode
+.idea
+*.swp
+*.swo
+*.tmp
+.DS_Store
+Thumbs.db
+
+# 日志文件
+*.log
+logs/
+
+# 临时文件
+tmp/
+temp/
+.tmp
+
+# Docker相关
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# 测试文件
+test/
+tests/
+*_test.py
+test_*.py
+
+# 其他构建产物
+build/
+dist/
+*.egg-info/
+.wheel
+.coverage
+
+# OS生成的文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# UV锁定文件（运行时会重新生成）
+uv.lock 

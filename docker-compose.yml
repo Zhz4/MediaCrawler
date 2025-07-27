@@ -1,0 +1,27 @@
+
+services:
+  mediacrawler:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mediacrawler
+    restart: unless-stopped
+    environment:
+      - START_MODE=web
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+      - HEADLESS=true
+      - ENABLE_CDP_MODE=false
+    ports:
+      - "8000:8000" # FastAPI 后端端口
+      - "3000:3000" # Next.js 前端端口
+    volumes:
+      - ./data:/app/data
+      - ./browser_data:/app/browser_data
+      - ./cache:/app/cache
+      - ./config:/app/config
+    networks:
+      - mediacrawler-network
+networks:
+  mediacrawler-network:
+    driver: bridge
