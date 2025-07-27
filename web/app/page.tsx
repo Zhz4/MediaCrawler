@@ -3,16 +3,52 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 // 平台配置
 const PLATFORMS = [
-  { id: "xhs", name: "小红书", color: "bg-red-500", icon: "📱" },
-  { id: "dy", name: "抖音", color: "bg-slate-900", icon: "🎵" },
-  { id: "ks", name: "快手", color: "bg-orange-500", icon: "⚡" },
-  { id: "bili", name: "哔哩哔哩", color: "bg-pink-500", icon: "📺" },
-  { id: "wb", name: "微博", color: "bg-orange-600", icon: "🐦" },
-  { id: "tieba", name: "百度贴吧", color: "bg-blue-600", icon: "💬" },
-  { id: "zhihu", name: "知乎", color: "bg-blue-500", icon: "🧠" },
+  {
+    id: "xhs",
+    name: "小红书",
+    color: "bg-red-500",
+    icon: "/assets/icons/xiaohongshu.png",
+  },
+  {
+    id: "dy",
+    name: "抖音",
+    color: "bg-slate-900",
+    icon: "/assets/icons/douyin.png",
+  },
+  {
+    id: "ks",
+    name: "快手",
+    color: "bg-orange-500",
+    icon: "/assets/icons/kuaishou.png",
+  },
+  {
+    id: "bili",
+    name: "哔哩哔哩",
+    color: "bg-pink-500",
+    icon: "/assets/icons/bilibili.png",
+  },
+  {
+    id: "wb",
+    name: "微博",
+    color: "bg-orange-600",
+    icon: "/assets/icons/weibo.png",
+  },
+  {
+    id: "tieba",
+    name: "百度贴吧",
+    color: "bg-blue-600",
+    icon: "/assets/icons/tieba.png",
+  },
+  {
+    id: "zhihu",
+    name: "知乎",
+    color: "bg-blue-500",
+    icon: "/assets/icons/zhihu.png",
+  },
 ];
 
 // 功能配置
@@ -26,7 +62,7 @@ const FEATURES = [
   },
   {
     id: "detail",
-    name: "详情功能", 
+    name: "详情功能",
     description: "获取指定帖子/视频详细信息",
     icon: "📄",
     color: "bg-primary",
@@ -34,7 +70,7 @@ const FEATURES = [
   {
     id: "creator",
     name: "创作者功能",
-    description: "获取指定创作者的内容信息", 
+    description: "获取指定创作者的内容信息",
     icon: "👤",
     color: "bg-purple-500",
   },
@@ -46,7 +82,7 @@ export default function Home() {
   const router = useRouter();
   const handleStart = () => {
     if (selectedPlatform && selectedFeature) {
-        router.push(`/${selectedFeature}?platform=${selectedPlatform}`);
+      router.push(`/${selectedFeature}?platform=${selectedPlatform}`);
     }
   };
 
@@ -80,9 +116,14 @@ export default function Home() {
                 onClick={() => setSelectedPlatform(platform.id)}
               >
                 <div
-                  className={`w-12 h-12 ${platform.color} rounded-lg flex items-center justify-center text-white text-xl mx-auto mb-2`}
+                  className={`w-12 h-12 rounded-lg flex items-center justify-center text-white text-xl mx-auto mb-2`}
                 >
-                  {platform.icon}
+                  <Image
+                    width={48}
+                    height={48}
+                    src={platform.icon}
+                    alt={platform.name}
+                  />
                 </div>
                 <h3 className="font-medium text-foreground text-sm">
                   {platform.name}
@@ -140,7 +181,7 @@ export default function Home() {
               onClick={() => router.push("/status")}
               className="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-6 py-3 text-lg rounded-xl transition-all duration-200"
             >
-              📊 系统状态
+              系统状态
             </Button>
           </div>
         </div>
@@ -152,13 +193,13 @@ export default function Home() {
               已选择：
               {selectedPlatform && (
                 <span className="text-primary font-medium mx-2">
-                  {PLATFORMS.find(p => p.id === selectedPlatform)?.name}
+                  {PLATFORMS.find((p) => p.id === selectedPlatform)?.name}
                 </span>
               )}
               {selectedPlatform && selectedFeature && " + "}
               {selectedFeature && (
                 <span className="text-accent-foreground font-medium mx-2">
-                  {FEATURES.find(f => f.id === selectedFeature)?.name}
+                  {FEATURES.find((f) => f.id === selectedFeature)?.name}
                 </span>
               )}
             </p>
